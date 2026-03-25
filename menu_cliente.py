@@ -24,18 +24,10 @@ for producto, precio in menu.items():
     if cantidad > 0:
         pedido.append((producto, cantidad, precio))
 
-if st.button("📲 Hacer pedido"):
+if st.button("📲 Enviar pedido via WhatsApp",link):
     if pedido:
 
-        # =========================
-        # 📥 GUARDAR EN EXCEL
-        # =========================
 
-
-        # guardar sin borrar archivo
-
-
-        # =========================
         # 📲 WHATSAPP
         # =========================
         mensaje = "Hola, quiero ordenar:%0A"
@@ -51,7 +43,6 @@ if st.button("📲 Hacer pedido"):
         link = f"https://wa.me/{numero}?text={mensaje}"
 
        
-        st.link_button("Enviar pedido por WhatsApp", link)
 
     else:
         st.warning("Selecciona al menos un producto")
