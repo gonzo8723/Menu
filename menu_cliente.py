@@ -24,10 +24,34 @@ for producto, precio in menu.items():
     if cantidad > 0:
         pedido.append((producto, cantidad, precio))
 
-if st.button("📲 Enviar pedido via WhatsApp"):
+if st.button("📲 Hacer pedido"):
     if pedido:
 
+        # =========================
+        # 📥 GUARDAR EN EXCEL
+        # =========================
+        ventas = pd.read_excel(archivo, sheet_name="ventas")
 
+        nuevas_ventas = []
+
+        for producto, cantidad, precio in pedido:
+            nuevas_ventas.append({
+                "fecha": datetime.now(),
+                "producto": producto,
+                "cantidad": cantidad,
+                "precio": precio,
+                "total_venta": cantidad * precio
+            })
+
+        nuevas_ventas_df = pd.DataFrame(nuevas_ventas)
+
+        ventas = pd.concat([ventas, nuevas_ventas_df], ignore_index=True)
+
+        # guardar sin borrar archivo
+        with pd.ExcelWriter(archivo, engine="openpyxl", mode="a", if_sheet_exists="replace") as writer:
+            ventas.to_excel(writer, sheet_name="ventas", index=False)
+
+        # =========================
         # 📲 WHATSAPP
         # =========================
         mensaje = "Hola, quiero ordenar:%0A"
@@ -42,8 +66,8 @@ if st.button("📲 Enviar pedido via WhatsApp"):
         numero = "5213781861057"
         link = f"https://wa.me/{numero}?text={mensaje}"
 
-       st.success("Pedido guardado ✅")
-       st.link_button("Enviar pedido por WhatsApp", link)
+        st.success("Pedido guardado ✅")
+        st.link_button("Enviar pedido por WhatsApp", link)
 
     else:
         st.warning("Selecciona al menos un producto")
