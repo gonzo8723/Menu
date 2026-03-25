@@ -24,7 +24,7 @@ for producto, precio in menu.items():
     if cantidad > 0:
         pedido.append((producto, cantidad, precio))
 
-if st.button("📲 Enviar pedido via WhatsApp",link):
+if st.button("📲 Enviar pedido via WhatsApp"):
     if pedido:
 
 
