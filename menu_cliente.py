@@ -33,8 +33,7 @@ if st.button("📲 Hacer pedido"):
 
 
         # guardar sin borrar archivo
-        with pd.ExcelWriter(archivo, engine="openpyxl", mode="a", if_sheet_exists="replace") as writer:
-            ventas.to_excel(writer, sheet_name="ventas", index=False)
+
 
         # =========================
         # 📲 WHATSAPP
