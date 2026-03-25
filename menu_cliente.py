@@ -1,8 +1,8 @@
 import streamlit as st
 
 # Configuración de la página
-st.set_page_config(page_title="Sushi Ki-Ki_ho 🐸🍣")
-st.title("🍣 Ki-Ki_ho 🐸")
+st.set_page_config(page_title="Sushi Ki-Ki-ho 🐸🍣")
+st.title("🍣 Ki-Ki-ho 🐸")
 st.subheader("Menú")
 
 # Menú de productos
