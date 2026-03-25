@@ -43,7 +43,7 @@ if st.button("📲 Enviar pedido via WhatsApp"):
         link = f"https://wa.me/{numero}?text={mensaje}"
 
        st.success("Pedido guardado ✅")
-        st.link_button("Enviar pedido por WhatsApp", link)
+       st.link_button("Enviar pedido por WhatsApp", link)
 
     else:
         st.warning("Selecciona al menos un producto")
