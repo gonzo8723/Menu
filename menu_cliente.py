@@ -50,7 +50,7 @@ if st.button("📲 Hacer pedido"):
         numero = "5213781861057"
         link = f"https://wa.me/{numero}?text={mensaje}"
 
-        st.success("Pedido guardado ✅")
+       
         st.link_button("Enviar pedido por WhatsApp", link)
 
     else:
