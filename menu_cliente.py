@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 from datetime import datetime
 
-archivo = r"C:\Users\gonzo\OneDrive\Desktop\sushi_master.xlsx"
+
 
 st.set_page_config(page_title="Sushi Master 🍣")
 
@@ -28,27 +28,7 @@ if st.button("📲 Hacer pedido"):
         # =========================
         # 📥 GUARDAR EN EXCEL
         # =========================
-        ventas = pd.read_excel(archivo, sheet_name="ventas")
-
-        nuevas_ventas = []
-
-        for producto, cantidad, precio in pedido:
-            nuevas_ventas.append({
-                "fecha": datetime.now(),
-                "producto": producto,
-                "cantidad": cantidad,
-                "precio": precio,
-                "total_venta": cantidad * precio
-            })
-
-        nuevas_ventas_df = pd.DataFrame(nuevas_ventas)
-
-        ventas = pd.concat([ventas, nuevas_ventas_df], ignore_index=True)
-
-        # guardar sin borrar archivo
-        with pd.ExcelWriter(archivo, engine="openpyxl", mode="a", if_sheet_exists="replace") as writer:
-            ventas.to_excel(writer, sheet_name="ventas", index=False)
-
+        
         # =========================
         # 📲 WHATSAPP
         # =========================
